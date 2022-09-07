@@ -1,0 +1,19 @@
+.sidebar{
+  width:300px;
+  background-color: #5db5b8;
+}
+
+.nonactive{
+  margin: 10px;
+  text-decoration: none;
+  color:white;
+}
+
+.active{
+  color: gold;
+  text-decoration: none;
+}
+
+.navbar{
+  padding: 20px;
+}

@@ -1,19 +1,29 @@
 .sidebar{
   width:300px;
-  background-color: #5db5b8;
+  background-color: #1C3B6A;
 }
 
 .nonactive{
-  margin: 10px;
   text-decoration: none;
   color:white;
+  padding: 10px 10px 10px 50px;
 }
 
 .active{
-  color: gold;
+  background-color: #192C54;
+  color: white;
   text-decoration: none;
+  padding: 10px 10px 10px 50px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius:20px;
 }
 
 .navbar{
+  height: 500px;
   padding: 20px;
+}
+
+.nav_menu{
+margin: 20px 0 0 0;
+
 }

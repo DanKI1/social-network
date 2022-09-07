@@ -1,7 +1,8 @@
 .header{
-  background-color: rgb(213, 112, 210);
+  background-color: #1C3B6A;
 }
 
 .header img{
+  border-radius: 30px;
   width:60px;
 }

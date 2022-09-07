@@ -1,9 +1,13 @@
 .wrapper{
   width: 1200px;
   margin:0 auto;
-  background-color: bisque;
+  background-color: #1C3B6A;
 }
 
+
+body{
+  background-color: #192C54;
+}
 
 .wrapper-content{
   display: flex;

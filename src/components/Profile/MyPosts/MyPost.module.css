@@ -1,0 +1,27 @@
+h3{
+    color: white;
+}
+
+textarea{
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+.wrapper_mypost{
+    margin:0 40px 0 40px;
+}
+
+.button_mypost{
+    background-color:#FFDF4E;
+    padding:10px 40px 10px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    border-width: 0;
+    transition: all 0.5s ease;
+    margin-bottom: 20px;
+}
+
+.button_mypost:hover{
+    background-color:#c7ae3f;
+}

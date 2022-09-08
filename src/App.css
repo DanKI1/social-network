@@ -2,11 +2,12 @@
   width: 1200px;
   margin:0 auto;
   background-color: #1C3B6A;
+  border-radius: 30px;
 }
 
 
 body{
-  background-color: #192C54;
+  background-color: #FFDF4E;
 }
 
 .wrapper-content{

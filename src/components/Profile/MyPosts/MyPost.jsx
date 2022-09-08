@@ -1,15 +1,15 @@
 import React from 'react';
-// import p from './MyPost.module.css';
+import p from './MyPost.module.css';
 import Post from './Post/Post';
 
 const MyPost = () => {
     return(
-      <div>
+      <div className={p.wrapper_mypost}>
         <div>
-        My posts
+        <h3>My posts</h3>
         </div>
       <textarea></textarea>
-      <button>Add</button>
+      <button className={p.button_mypost}>Add</button>
       <Post countlike="22" message='Hello how are you?'/>
       <Post countlike="12" message='Hello i am fine, and u?'/>
       <Post countlike="454" message='I am also fine, thx for u care'/>

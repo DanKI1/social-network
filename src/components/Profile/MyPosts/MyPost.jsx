@@ -2,6 +2,14 @@ import React from 'react';
 import p from './MyPost.module.css';
 import Post from './Post/Post';
 
+let PostData = [{id:1,message:"I am also fine, thx for u care",like:12},
+    {id:2,message:"How are you?",like:123},
+    {id:3,message:"No proplem bro",like:34},
+    {id:3,message:"yo",like:1532},
+    {id:3,message:"yo",like:154}
+]
+
+
 const MyPost = () => {
     return(
       <div className={p.wrapper_mypost}>
@@ -10,10 +18,8 @@ const MyPost = () => {
         </div>
       <textarea></textarea>
       <button className={p.button_mypost}>Add</button>
-      <Post countlike="22" message='Hello how are you?'/>
-      <Post countlike="12" message='Hello i am fine, and u?'/>
-      <Post countlike="454" message='I am also fine, thx for u care'/>
-      <Post countlike="13" message='No proplem bro'/>
+      <Post countlike={PostData[0].like} message={PostData[0].message}/>
+      <Post countlike={PostData[1].like} message={PostData[1].message}/>
      </div>
      
     )

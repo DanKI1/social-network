@@ -9,6 +9,8 @@ let PostData = [{id:1,message:"I am also fine, thx for u care",like:12},
     {id:3,message:"yo",like:154}
 ]
 
+let posts = PostData.map(post => <Post countlike={post.like} message={post.message}/>)
+
 
 const MyPost = () => {
     return(
@@ -18,8 +20,7 @@ const MyPost = () => {
         </div>
       <textarea></textarea>
       <button className={p.button_mypost}>Add</button>
-      <Post countlike={PostData[0].like} message={PostData[0].message}/>
-      <Post countlike={PostData[1].like} message={PostData[1].message}/>
+      {posts}
      </div>
      
     )

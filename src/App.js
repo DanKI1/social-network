@@ -10,7 +10,7 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
           <div className="wrapper">
@@ -18,8 +18,8 @@ function App() {
         <div className='wrapper-content'>
         <Navbar/>
         <Routes>
-          <Route path="/profile/*" element = {<Profile />}/>
-				  <Route path="/dialogs/*" element = {<Dialogs />}/>
+          <Route path="/profile/*" element = {<Profile post_datas = {props.post_datas}/>}/>
+				  <Route path="/dialogs/*" element = {<Dialogs message_datas = {props.message_datas} dialog_datas = {props.dialog_datas}/>}/>
           <Route path="/news/*" element = {<News />}/>
 				  <Route path="/music/*" element = {<Music />}/>
           <Route path="/settings/*" element = {<Settings />}/>

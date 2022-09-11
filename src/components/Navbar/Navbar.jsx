@@ -2,7 +2,11 @@ import React from 'react';
 import n from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
 
-const Navbar = () => {
+
+
+
+const Navbar = (props) => {
+  debugger;
     return(
         <section className={n.sidebar}>
       {/* <div className={n.navbar}> */}
@@ -22,7 +26,17 @@ const Navbar = () => {
           <NavLink className = { navData => navData.isActive ? n.active : n.nonactive } to="/settings">Settings</NavLink>
         </div>
       {/* </div> */}
-        
+      <br/>
+      <br/>
+      <br/>
+      Best friends
+        <div>
+          <img width ="60px" src={props.state[0].avatar} alt=""/>
+          <div>
+          {props.state[0].name}
+          </div>
+         
+        </div>
       </section>
     )
 }

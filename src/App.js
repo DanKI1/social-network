@@ -11,15 +11,16 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
 function App(props) {
+
   return (
     <BrowserRouter>
           <div className="wrapper">
         <Header/>
         <div className='wrapper-content'>
-        <Navbar/>
+        <Navbar state = {props.state.sidebarFriends}/>
         <Routes>
-          <Route path="/profile/*" element = {<Profile post_datas = {props.post_datas}/>}/>
-				  <Route path="/dialogs/*" element = {<Dialogs message_datas = {props.message_datas} dialog_datas = {props.dialog_datas}/>}/>
+          <Route path="/profile/*" element = {<Profile state = {props.state.profilePage}/>}/>
+				  <Route path="/dialogs/*" element = {<Dialogs state = {props.state.dialogsPage}/>}/>
           <Route path="/news/*" element = {<News />}/>
 				  <Route path="/music/*" element = {<Music />}/>
           <Route path="/settings/*" element = {<Settings />}/>

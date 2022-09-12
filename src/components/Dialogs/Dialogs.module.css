@@ -1,17 +1,43 @@
 .dialogs{
   display:grid;
-  grid-template-columns: 80fr 30fr;
+  grid-template-columns: 2fr 2fr;
 }
 a{
   text-decoration: none;
-  color:white;
+  color:rgb(0, 0, 0);
 }
 
-.message,h1{
-  color:white;
+.message{
+  color:rgb(0, 0, 0);
+  margin-left: 30px;
 }
+
+
 .dialogsItem img{
   width: 60px;
   border-radius: 30px;
 }
 
+
+.dialog{
+  border-right: 1px solid black;
+  margin-left: 20px;
+}
+
+.message img{
+  width: 60px;
+  border-radius: 30px;
+}
+
+.message{
+  margin-left: 10px;
+}
+
+
+.sright{
+    background-color: brown;
+}
+
+.sleft{
+  background-color: rgb(219, 222, 22);
+}

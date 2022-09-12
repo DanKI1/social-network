@@ -1,5 +1,5 @@
 .sidebar{
-  width:300px;
+  width:200px;
   background-color: #1C3B6A;
 }
 
@@ -26,4 +26,12 @@
 .nav_menu{
 margin: 20px 0 0 0;
 
+}
+
+.wrapper_bestfriends{
+    display: flex;
+}
+
+.nameBF{
+  color: white;
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import n from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
+import NavbarBF from './NavbarBF/NavbarBF';
 
 
 
 
 const Navbar = (props) => {
-  debugger;
+      let bestfriends = props.state.map(friends =><NavbarBF avatar={friends.avatar} name = {friends.name}/>);
     return(
         <section className={n.sidebar}>
       {/* <div className={n.navbar}> */}
@@ -26,17 +27,10 @@ const Navbar = (props) => {
           <NavLink className = { navData => navData.isActive ? n.active : n.nonactive } to="/settings">Settings</NavLink>
         </div>
       {/* </div> */}
-      <br/>
-      <br/>
-      <br/>
-      Best friends
-        <div>
-          <img width ="60px" src={props.state[0].avatar} alt=""/>
-          <div>
-          {props.state[0].name}
-          </div>
-         
-        </div>
+      <h1 className={n.nameBF}>Best friends</h1>
+      <div className={n.wrapper_bestfriends}>
+      {bestfriends}
+      </div>
       </section>
     )
 }

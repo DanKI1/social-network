@@ -9,10 +9,10 @@ const Dialogs = (props) => {
 
     let dialogs = props.state.dialogs.map(dialog => <DialogItem name = {dialog.name} id = {dialog.id} avatar = {dialog.avatar}/>);
 
-    let messages = props.state.messages.map(message => <Message message = {message.message}/>);
+    let messages = props.state.messages.map(message => <Message message = {message.message} avatar = {message.avatar}/>);
 
     return(
-       <div>
+       <div className={h.wrapper_dialogs}>
         <h1>Messages</h1>
             <div className={h.dialogs}>
                 <div className={h.dialogsItem}>

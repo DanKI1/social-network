@@ -5,7 +5,7 @@ import h from './../Dialogs.module.css';
 const DialogItem = (props) =>{
     return <div className={h.dialog}>
         <img src={props.avatar} alt = ""/>
-        <NavLink to={"/dialogs/"+props.id}>{props.name}</NavLink>
+        <NavLink className={h.name_dialogItem} to={"/dialogs/"+props.id}>{props.name}</NavLink>
         </div>
 }
 

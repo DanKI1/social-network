@@ -10,6 +10,7 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
+
 function App(props) {
 
   return (
@@ -19,7 +20,7 @@ function App(props) {
         <div className='wrapper-content'>
         <Navbar state = {props.state.sidebarFriends}/>
         <Routes>
-          <Route path="/profile/*" element = {<Profile state = {props.state.profilePage}/>}/>
+          <Route path="/profile/*" element = {<Profile state = {props.state.profilePage} addPost = {props.addPost}/>}/>
 				  <Route path="/dialogs/*" element = {<Dialogs state = {props.state.dialogsPage}/>}/>
           <Route path="/news/*" element = {<News />}/>
 				  <Route path="/music/*" element = {<Music />}/>

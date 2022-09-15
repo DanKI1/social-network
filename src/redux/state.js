@@ -1,3 +1,5 @@
+import { reranderEntireTree } from "../render";
+
 let state = {
         profilePage:{
             posts:[{id:1,message:"I am also fine, thx for u care",like:12},
@@ -27,5 +29,18 @@ let state = {
         {id:3,name:"Erik",avatar:"https://anime-fans.ru/wp-content/uploads/2021/03/Topovyj-anime-art-na-avu-devushki-sborki-kartinok-3.jpg"}
     ]
 }
+
+
+export let addPost = (postMessage) =>{
+    let newPost = {
+        id:5,
+        message:postMessage,
+        like:0
+    };
+    state.profilePage.posts.push(newPost);
+    reranderEntireTree(state);
+}
+
+
 
 export default state;

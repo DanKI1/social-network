@@ -7,7 +7,8 @@ let state = {
             {id:3,message:"No proplem bro",like:34},
             {id:3,message:"yo",like:1532},
             {id:3,message:"yo",like:154}
-        ]
+        ],
+            newPostText:"I love my job"
         },
         dialogsPage:{
         dialogs:[{id:1,name:"Mam",avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbA8SCLvl1WXaZ8MVqGAYLC4UzRopT98CReSM0rtNWXAI_Y3robgvG0KW_wKZgSQ2oFZg&usqp=CAU"},
@@ -30,17 +31,20 @@ let state = {
     ]
 }
 
-
-export let addPost = (postMessage) =>{
+export let addPost = () =>{
     let newPost = {
         id:5,
-        message:postMessage,
+        message:state.profilePage.newPostText,
         like:0
     };
+    state.profilePage.newPostText = "";
     state.profilePage.posts.push(newPost);
     reranderEntireTree(state);
 }
 
-
+export let updatePostText = (newText) =>{
+    state.profilePage.newPostText = newText;
+    reranderEntireTree(state);
+}
 
 export default state;

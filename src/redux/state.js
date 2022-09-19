@@ -1,4 +1,6 @@
-import { reranderEntireTree } from "../render";
+let reranderEntireTree = () =>{
+    console.log("hello");
+}
 
 let state = {
         profilePage:{
@@ -31,7 +33,7 @@ let state = {
     ]
 }
 
-export let addPost = () =>{
+export const addPost = () =>{
     let newPost = {
         id:5,
         message:state.profilePage.newPostText,
@@ -42,9 +44,13 @@ export let addPost = () =>{
     reranderEntireTree(state);
 }
 
-export let updatePostText = (newText) =>{
+export const updatePostText = (newText) =>{
     state.profilePage.newPostText = newText;
     reranderEntireTree(state);
+}
+
+export const subscribe = (observer) =>{
+    reranderEntireTree=observer;
 }
 
 export default state;

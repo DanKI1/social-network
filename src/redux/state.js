@@ -1,8 +1,5 @@
-let reranderEntireTree = () =>{
-    console.log("hello");
-}
-
-let state = {
+let store = {
+    _state: {
         profilePage:{
             posts:[{id:1,message:"I am also fine, thx for u care",like:12},
             {id:2,message:"How are you?",like:123},
@@ -31,26 +28,30 @@ let state = {
         {id:2,name:"Mathfey",avatar:"https://aniyuki.com/wp-content/uploads/2021/06/aniyuki-funny-anime-avatars-74.jpg"},
         {id:3,name:"Erik",avatar:"https://anime-fans.ru/wp-content/uploads/2021/03/Topovyj-anime-art-na-avu-devushki-sborki-kartinok-3.jpg"}
     ]
+    },
+    getState(){
+        return this._state;
+    },
+    addPost(){
+        let newPost = {
+            id:5,
+            message:this._state.profilePage.newPostText,
+            like:0
+        };
+        this._state.profilePage.newPostText = "";
+        this._state.profilePage.posts.push(newPost);
+        this._callSubscriber(this._state);
+    },
+    updatePostText(newText){
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber(this._state);
+    },
+    subscribe(observer){
+        this._callSubscriber=observer;
+    },
+    _callSubscriber() {
+        console.log("hello");
+    }
 }
 
-export const addPost = () =>{
-    let newPost = {
-        id:5,
-        message:state.profilePage.newPostText,
-        like:0
-    };
-    state.profilePage.newPostText = "";
-    state.profilePage.posts.push(newPost);
-    reranderEntireTree(state);
-}
-
-export const updatePostText = (newText) =>{
-    state.profilePage.newPostText = newText;
-    reranderEntireTree(state);
-}
-
-export const subscribe = (observer) =>{
-    reranderEntireTree=observer;
-}
-
-export default state;
+export default store;

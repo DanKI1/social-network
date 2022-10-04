@@ -29,29 +29,31 @@ let store = {
         {id:3,name:"Erik",avatar:"https://anime-fans.ru/wp-content/uploads/2021/03/Topovyj-anime-art-na-avu-devushki-sborki-kartinok-3.jpg"}
     ]
     },
+     _callSubscriber() {
+        console.log("hello");
+    },
     getState(){
         return this._state;
-    },
-    addPost(){
-        let newPost = {
-            id:5,
-            message:this._state.profilePage.newPostText,
-            like:0
-        };
-        this._state.profilePage.newPostText = "";
-        this._state.profilePage.posts.push(newPost);
-        this._callSubscriber(this._state);
-    },
-    updatePostText(newText){
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
     },
     subscribe(observer){
         this._callSubscriber=observer;
     },
-    _callSubscriber() {
-        console.log("hello");
+    dispatch(action){
+        if(action.type ==='ADD-POST'){
+            let newPost = {
+                id:5,
+                message:this._state.profilePage.newPostText,
+                like:0
+            };
+            this._state.profilePage.newPostText = "";
+            this._state.profilePage.posts.push(newPost);
+            this._callSubscriber(this._state);
+        }else if(action.type ==='UPDATE-POST-TEXT'){
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
+   
 }
 
 export default store;

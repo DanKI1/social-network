@@ -1,7 +1,9 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 
-
+const UPDATE_MESSAGE_BODY = "UPDATE-MESSAGE-BODY";
+const ADD_MESSAGE = "ADD-MESSAGE";
+debugger;
 let store = {
     _state: {
         profilePage:{
@@ -26,7 +28,8 @@ let store = {
         {id:3,message:"Oh I'm okey",avatar:"https://i.pinimg.com/originals/71/65/3f/71653fdc6a335904edf1fa6a368981b6.jpg"},
         {id:3,message:"yo",avatar:"https://i.pinimg.com/originals/71/65/3f/71653fdc6a335904edf1fa6a368981b6.jpg"},
         {id:3,message:"yo",avatar:"https://i.pinimg.com/originals/71/65/3f/71653fdc6a335904edf1fa6a368981b6.jpg"}
-    ]
+    ],
+        newMessageText:""
         },
         sidebarFriends:[{id:1,name:"Andrey",avatar:"https://anime-fans.ru/wp-content/uploads/2021/01/Ochen-smeshnye-anime-avy_05.jpg"},
         {id:2,name:"Mathfey",avatar:"https://aniyuki.com/wp-content/uploads/2021/06/aniyuki-funny-anime-avatars-74.jpg"},
@@ -55,11 +58,24 @@ let store = {
         }else if(action.type ==='UPDATE-POST-TEXT'){
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
+        }else if(action.type === "UPDATE-MESSAGE-BODY"){
+            this._state.dialogsPage.newMessageText = action.body;
+            this._callSubscriber(this._state);
+        }else if(action.type ==='ADD-MESSAGE'){
+            let body = this._state.dialogsPage.newMessageText;
+            this._state.dialogsPage.newMessageText="";
+            this._state.dialogsPage.messages.push({id:6,message:body,
+                avatar:"https://i.pinimg.com/originals/71/65/3f/71653fdc6a335904edf1fa6a368981b6.jpg"});
+            this._callSubscriber(this._state);
+
         }
     }
 }
 
 export const AddPostActionCreator = () => ({type:ADD_POST});
 export const UpdatePostTextActionCreator = (text) => ({type:UPDATE_POST_TEXT,newText:text});
+
+export const AddMessageCreator = () => ({type:ADD_MESSAGE});
+export const UpdateMessageBodyCreator = (body) => ({type:UPDATE_MESSAGE_BODY,body:body});
 
 export default store;

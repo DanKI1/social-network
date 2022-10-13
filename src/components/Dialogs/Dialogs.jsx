@@ -1,4 +1,5 @@
 import React from 'react';
+import { AddMessageCreator, UpdateMessageBodyCreator } from '../../redux/state';
 import DialogItem from './DialogItem/DialogsItem';
 import h from './Dialogs.module.css';
 import Message from './Message/Message';
@@ -6,15 +7,26 @@ import Message from './Message/Message';
 
 
 const Dialogs = (props) => {
-    let messageData = React.createRef();
 
-    let sendNewMessage =()=> {
-        alert(messageData.current.value);
+debugger;
+    let state = props.store.getState().dialogsPage;
+
+    let dialogs = state.dialogs.map(dialog => <DialogItem name = {dialog.name} id = {dialog.id} avatar = {dialog.avatar}/>);
+    let messages = state.messages.map(message => <Message message = {message.message} avatar = {message.avatar}/>);
+    let newMessageBody = state.newMessageBody;
+
+
+
+    let upadateMessageBody = (e) =>{
+        let body = e.target.value;
+        props.store.dispatch(UpdateMessageBodyCreator(body));
     }
 
-    let dialogs = props.state.dialogs.map(dialog => <DialogItem name = {dialog.name} id = {dialog.id} avatar = {dialog.avatar}/>);
+    let onSendMessageClick = () =>{
+        props.store.dispatch(AddMessageCreator());
+    }
 
-    let messages = props.state.messages.map(message => <Message message = {message.message} avatar = {message.avatar}/>);
+
 
     return(
        <div className={h.wrapper_dialogs}>
@@ -28,8 +40,8 @@ const Dialogs = (props) => {
                 </div>
             </div>
             <div className={h.wrapper_send}>
-            <textarea ref={messageData}></textarea>
-            <button onClick={sendNewMessage} className={h.button_messages}>Send</button> 
+            <textarea onChange={upadateMessageBody} value={newMessageBody}></textarea>
+            <button onClick={onSendMessageClick} className={h.button_messages}>Send</button> 
             </div>
        </div>
     )

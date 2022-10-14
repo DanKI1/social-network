@@ -1,9 +1,7 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+import reduserDialog from "./reduserDialog";
+import reduserProfile from "./reduserProfile";
+import reduserSidebarFriends from "./reduserSidebarFriends";
 
-const UPDATE_MESSAGE_BODY = "UPDATE-MESSAGE-BODY";
-const ADD_MESSAGE = "ADD-MESSAGE";
-debugger;
 let store = {
     _state: {
         profilePage:{
@@ -29,7 +27,7 @@ let store = {
         {id:3,message:"yo",avatar:"https://i.pinimg.com/originals/71/65/3f/71653fdc6a335904edf1fa6a368981b6.jpg"},
         {id:3,message:"yo",avatar:"https://i.pinimg.com/originals/71/65/3f/71653fdc6a335904edf1fa6a368981b6.jpg"}
     ],
-        newMessageText:""
+        newMessageText:"I love read"
         },
         sidebarFriends:[{id:1,name:"Andrey",avatar:"https://anime-fans.ru/wp-content/uploads/2021/01/Ochen-smeshnye-anime-avy_05.jpg"},
         {id:2,name:"Mathfey",avatar:"https://aniyuki.com/wp-content/uploads/2021/06/aniyuki-funny-anime-avatars-74.jpg"},
@@ -46,36 +44,16 @@ let store = {
         this._callSubscriber=observer;
     },
     dispatch(action){
-        if(action.type ==='ADD-POST'){
-            let newPost = {
-                id:5,
-                message:this._state.profilePage.newPostText,
-                like:0
-            };
-            this._state.profilePage.newPostText = "";
-            this._state.profilePage.posts.push(newPost);
-            this._callSubscriber(this._state);
-        }else if(action.type ==='UPDATE-POST-TEXT'){
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        }else if(action.type === "UPDATE-MESSAGE-BODY"){
-            this._state.dialogsPage.newMessageText = action.body;
-            this._callSubscriber(this._state);
-        }else if(action.type ==='ADD-MESSAGE'){
-            let body = this._state.dialogsPage.newMessageText;
-            this._state.dialogsPage.newMessageText="";
-            this._state.dialogsPage.messages.push({id:6,message:body,
-                avatar:"https://i.pinimg.com/originals/71/65/3f/71653fdc6a335904edf1fa6a368981b6.jpg"});
-            this._callSubscriber(this._state);
+        this._state.profilePage = reduserProfile(this._state.profilePage,action);
+        this._state.dialogsPage = reduserDialog(this._state.dialogsPage,action);
+        this._state.sidebarFriends = reduserSidebarFriends(this._state.sidebarFriends,action);
 
-        }
+        this._callSubscriber(this._state);
     }
 }
 
-export const AddPostActionCreator = () => ({type:ADD_POST});
-export const UpdatePostTextActionCreator = (text) => ({type:UPDATE_POST_TEXT,newText:text});
 
-export const AddMessageCreator = () => ({type:ADD_MESSAGE});
-export const UpdateMessageBodyCreator = (body) => ({type:UPDATE_MESSAGE_BODY,body:body});
 
 export default store;
+
+window.store = store;

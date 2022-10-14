@@ -1,11 +1,11 @@
 import React from 'react';
-import { AddPostActionCreator, UpdatePostTextActionCreator } from '../../../redux/state';
+import { AddPostActionCreator, UpdatePostTextActionCreator } from '../../../redux/reduserProfile';
 import p from './MyPost.module.css';
 import Post from './Post/Post';
 
 
 const MyPost = (props) => {
-
+debugger;
   let posts = props.post_datas.map(post => <Post key={post.like} countlike={post.like} message={post.message}/>)
 
   let postData = React.createRef();

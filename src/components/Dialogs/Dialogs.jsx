@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddMessageCreator, UpdateMessageBodyCreator } from '../../redux/state';
+import { AddMessageCreator, UpdateMessageBodyCreator } from '../../redux/reduserDialog';
 import DialogItem from './DialogItem/DialogsItem';
 import h from './Dialogs.module.css';
 import Message from './Message/Message';
@@ -7,13 +7,13 @@ import Message from './Message/Message';
 
 
 const Dialogs = (props) => {
-
 debugger;
+
     let state = props.store.getState().dialogsPage;
 
     let dialogs = state.dialogs.map(dialog => <DialogItem name = {dialog.name} id = {dialog.id} avatar = {dialog.avatar}/>);
     let messages = state.messages.map(message => <Message message = {message.message} avatar = {message.avatar}/>);
-    let newMessageBody = state.newMessageBody;
+    let newMessageBody = state.newMessageText;
 
 
 

@@ -7,7 +7,7 @@ import NavbarBF from './NavbarBF/NavbarBF';
 
 
 const Navbar = (props) => {
-      let bestfriends = props.state.map(friends =><NavbarBF key={friends.avatar} avatar={friends.avatar} name = {friends.name}/>);
+      let bestfriends = props.sidebarFriends.map(friends =><NavbarBF key={friends.avatar} avatar={friends.avatar} name = {friends.name}/>);
     return(
         <section className={n.sidebar}>
       {/* <div className={n.navbar}> */}

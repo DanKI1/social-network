@@ -12,13 +12,13 @@ import Settings from './components/Settings/Settings';
 
 
 function App(props) {
-
+  debugger;
   return (
     <BrowserRouter>
           <div className="wrapper">
         <Header/>
         <div className='wrapper-content'>
-        <Navbar state = {props.state.sidebarFriends}/>
+        <Navbar sidebarFriends = {props.state.sidebarFriends}/>
         <Routes>
           <Route path="/profile/*" element = {<Profile profilePage = {props.state.profilePage} dispatch = {props.dispatch}/>}/>
 				  <Route path="/dialogs/*" element = {<Dialogs store = {props.store}/>}/>

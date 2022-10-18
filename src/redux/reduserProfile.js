@@ -1,7 +1,17 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 
-const reduserProfile = (state,action) =>{
+let init = {
+    posts:[{id:1,message:"I am also fine, thx for u care",like:12},
+            {id:2,message:"How are you?",like:123},
+            {id:3,message:"No proplem bro",like:34},
+            {id:3,message:"yo",like:1532},
+            {id:3,message:"yo",like:154}
+        ],
+            newPostText:"I love my job"
+};
+
+const reduserProfile = (state = init,action) =>{
     switch(action.type){
         case ADD_POST:
             let newPost = {

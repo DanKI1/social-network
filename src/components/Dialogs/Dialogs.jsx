@@ -1,5 +1,4 @@
 import React from 'react';
-import { AddMessageCreator, UpdateMessageBodyCreator } from '../../redux/reduserDialog';
 import DialogItem from './DialogItem/DialogsItem';
 import h from './Dialogs.module.css';
 import Message from './Message/Message';
@@ -7,23 +6,22 @@ import Message from './Message/Message';
 
 
 const Dialogs = (props) => {
-debugger;
-
-    let state = props.store.getState().dialogsPage;
-
-    let dialogs = state.dialogs.map(dialog => <DialogItem name = {dialog.name} id = {dialog.id} avatar = {dialog.avatar}/>);
-    let messages = state.messages.map(message => <Message message = {message.message} avatar = {message.avatar}/>);
-    let newMessageBody = state.newMessageText;
 
 
 
-    let upadateMessageBody = (e) =>{
+    let dialogs = props.state.dialogs.map(dialog => <DialogItem name = {dialog.name} id = {dialog.id} avatar = {dialog.avatar}/>);
+    let messages = props.state.messages.map(message => <Message message = {message.message} avatar = {message.avatar}/>);
+    let newMessageBody = props.state.newMessageText;
+
+
+
+    let onUpadateMessageBody = (e) =>{
         let body = e.target.value;
-        props.store.dispatch(UpdateMessageBodyCreator(body));
+        props.updateMessage(body);
     }
 
     let onSendMessageClick = () =>{
-        props.store.dispatch(AddMessageCreator());
+        props.sendMessage();
     }
 
 
@@ -40,7 +38,7 @@ debugger;
                 </div>
             </div>
             <div className={h.wrapper_send}>
-            <textarea onChange={upadateMessageBody} value={newMessageBody}></textarea>
+            <textarea onChange={onUpadateMessageBody} value={newMessageBody}></textarea>
             <button onClick={onSendMessageClick} className={h.button_messages}>Send</button> 
             </div>
        </div>

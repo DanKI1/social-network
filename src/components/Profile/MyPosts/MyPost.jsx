@@ -1,22 +1,21 @@
 import React from 'react';
-import { AddPostActionCreator, UpdatePostTextActionCreator } from '../../../redux/reduserProfile';
 import p from './MyPost.module.css';
 import Post from './Post/Post';
 
 
 const MyPost = (props) => {
-debugger;
-  let posts = props.post_datas.map(post => <Post key={post.like} countlike={post.like} message={post.message}/>)
 
-  let postData = React.createRef();
+  let posts = props.postData.map(post => <Post key={post.like} countlike={post.like} message={post.message}/>)
 
-  let addPosts = () => {
-    props.dispatch(AddPostActionCreator());
+  let postdata = React.createRef();
+
+  let onAddPosts = () => {
+    props.addPosts();
   }
 
   let onChangePost = () =>{
-    let text = postData.current.value;
-    props.dispatch(UpdatePostTextActionCreator(text));
+    let text = postdata.current.value;
+    props.changePost(text);
   }
 
     return(
@@ -24,8 +23,8 @@ debugger;
         <div>
         <h3>My posts</h3>
         </div>
-      <textarea onChange={onChangePost} ref={postData} value = {props.newPostText}></textarea>
-      <button onClick={addPosts} className={p.button_mypost}>Add</button>
+      <textarea onChange={onChangePost} ref={postdata} value = {props.newPostText}></textarea>
+      <button onClick={onAddPosts} className={p.button_mypost}>Add</button>
       {posts}
      </div>
      
